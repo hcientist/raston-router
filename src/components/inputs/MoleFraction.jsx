@@ -8,7 +8,7 @@ function MoleFraction({ params, setParams }) {
         id="mole-fraction"
         type="number"
         defaultValue={params.species[0].mole_fraction}
-        onClick={(e) => setParams({ ...params, mole_fraction: e.target.value })}
+        onChange={(e) => setParams({ ...params, mole_fraction: e.target.value })}
       ></input>
     </div>
   );
