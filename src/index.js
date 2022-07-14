@@ -10,7 +10,7 @@ import "./index.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/raston-router">
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="expenses" element={<Expenses />} />
