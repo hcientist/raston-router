@@ -5,10 +5,14 @@ import { Outlet, Link } from "react-router-dom";
 export default function App() {
   return (
     <div>
-      <h1>Bookkeeper</h1>
+      <h1>Raston Router and Redux</h1>
       <nav style={{ borderBottom: "solid 1px", paddingBottom: "1rem" }}>
-        <Link to="/invoices">Invoices</Link> |{" "}
-        <Link to="/expenses">Expenses</Link>
+        <Link to="/input" style={{ padding: "10px" }}>
+          Input
+        </Link>
+        <Link to="/output" style={{ padding: "10px" }}>
+          Output
+        </Link>
       </nav>
       <Outlet />
     </div>
