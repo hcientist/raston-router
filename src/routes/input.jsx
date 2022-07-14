@@ -15,20 +15,7 @@ export default function Input() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  /**
-   * Default Radis App Values
-   *   species: [{ molecule: "CO", mole_fraction: 0.1 }]
-   *   min_wavenumber_range: 1900
-   *   max_wavenumber_range: 2300
-   *   tgas: 300
-   *   tvib: null
-   *   trot: null
-   *   pressure: 1.01325
-   *   path_length: 1
-   *   simulate_slit: false
-   *   mode: "absorbance"
-   *   database: "hitran"
-   */
+  // user parameters
   const [params, setParams] = useState({
     species: [{ molecule: "CO", mole_fraction: 1 }],
     min_wavenumber_range: 1900,
@@ -45,7 +32,7 @@ export default function Input() {
 
   return (
     <div className="App">
-<h1>Input</h1>
+      <h1>Input</h1>
 
       <Form params={params} setParams={setParams} />
       <Fetch
