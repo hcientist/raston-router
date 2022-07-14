@@ -10,7 +10,6 @@ function Mode({ params, setParams }) {
         onChange={(e) => setParams({ ...params, mode: e.target.value })}
       >
         <option value="absorbance">Absorbance</option>
-        <option value="radiance">Radiance</option>
         <option value="transmittance_noslit">Transmittance</option>
       </select>
     </div>

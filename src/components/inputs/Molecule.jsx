@@ -7,7 +7,7 @@ function Molecule({ params, setParams }) {
       <select
         id="molecule"
         defaultValue={params.molecule}
-        onClick={(e) => setParams({ ...params, molecule: e.target.value })}
+        onChange={(e) => setParams({ ...params, molecule: e.target.value })}
       >
         <option value="CO">CO</option>
       </select>
