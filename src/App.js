@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Outlet, Link } from "react-router-dom";
 
+// https://reactrouter.com/docs/en/v6/getting-started/tutorial
 export default function App() {
   return (
     <div>
