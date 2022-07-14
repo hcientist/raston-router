@@ -1,7 +1,14 @@
 import React from "react";
 
+import { useDispatch } from "react-redux";
+import { storeInput } from "../actions";
+
 function Fetch({ params, setData, setLoading, setError }) {
+  const dispatch = useDispatch();
+
   async function fetchRadis() {
+    dispatch(storeInput(params));
+
     setError(false);
     setLoading(true);
 
