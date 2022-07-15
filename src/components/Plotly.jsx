@@ -1,7 +1,10 @@
 import React from "react";
 import Plot from "react-plotly.js";
 
-function Plotly({ data, params }) {
+function Plotly() {
+  const data = useSelector((state) => state.data);
+
+  const params = useSelector((state) => state.params);
   const addSubscriptsToMolecule = (molecule) => {
     const subscripts = "₁₂₃₄₅₆₇₈₉".split("");
     return molecule

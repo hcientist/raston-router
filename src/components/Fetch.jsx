@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useDispatch } from "react-redux";
-import { hideProgress, showProgress, storeParams } from "../actions";
+import { hideProgress, showProgress, storeData, storeParams } from "../actions";
 
 function Fetch({ params, setData, setError }) {
   const dispatch = useDispatch();
@@ -38,7 +38,8 @@ function Fetch({ params, setData, setError }) {
       });
 
       if (response.ok) {
-        setData(JSON.parse(await response.text()));
+        dispatch(storeData(JSON.parse(await response.text())));
+        // setData(JSON.parse(await response.text()));
         dispatch(hideProgress());
       } else {
         dispatch(hideProgress());
