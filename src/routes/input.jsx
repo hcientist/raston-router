@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 import Fetch from "../components/Fetch";
-import Form from "../components/Form";
 import Error from "../components/Error";
 import Plotly from "../components/Plotly";
 
@@ -20,22 +19,14 @@ import Molecule from "../components/inputs/Molecule";
 import MoleFraction from "../components/inputs/MoleFraction";
 
 export default function Input() {
-  // const [data, setData] = useState("");
   const [error, setError] = useState(false);
 
   const progress = useSelector((state) => state.isProgressing);
-
   const storedParams = useSelector((state) => state.params);
 
-  // user parameters loval stateiin the form
-  // const [params, setParams] = useState(storedParams);
-
-  const [species, setSpecies] = useState([
-    {
-      molecule: storedParams.species[0].molecule,
-      mole_fraction: storedParams.species[0].mole_fraction,
-    },
-  ]);
+  // values set by user
+  const [database, setDatabase] = useState(storedParams.database);
+  const [mode, setMode] = useState(storedParams.mode);
   const [min_wavenumber_range, setMin_wavenumber_range] = useState(
     storedParams.min_wavenumber_range
   );
@@ -43,15 +34,20 @@ export default function Input() {
     storedParams.max_wavenumber_range
   );
   const [tgas, setTgas] = useState(storedParams.tgas);
-  const [tvib, setTvib] = useState(storedParams.tvib);
-  const [trot, setTrot] = useState(storedParams.trot);
   const [pressure, setPressure] = useState(storedParams.pressure);
   const [path_length, setPath_length] = useState(storedParams.path_length);
-  const [simulate_slit, setSimulate_slit] = useState(
-    storedParams.simulate_slit
-  );
-  const [mode, setMode] = useState(storedParams.mode);
-  const [database, setDatabase] = useState(storedParams.database);
+  const [species, setSpecies] = useState([
+    {
+      molecule: storedParams.species[0].molecule,
+      mole_fraction: storedParams.species[0].mole_fraction,
+    },
+  ]);
+
+  // values not set by user, but needed for Radis App
+  const [tvib] = useState(storedParams.tvib);
+  const [trot] = useState(storedParams.trot);
+  const [simulate_slit] = useState(storedParams.simulate_slit);
+
   return (
     <div className="App">
       <h1>Input</h1>
@@ -59,23 +55,41 @@ export default function Input() {
       <div id="fourm">
         <Database val={database} setter={setDatabase} />
 
-        <Mode params={params} setParams={setParams} />
+        <Mode val={mode} setter={setMode} />
 
-        <MinWave params={params} setParams={setParams} />
+        <MinWave val={min_wavenumber_range} setter={setMin_wavenumber_range} />
 
-        <MaxWave params={params} setParams={setParams} />
+        <MaxWave val={max_wavenumber_range} setter={setMax_wavenumber_range} />
 
-        <Tgas params={params} setParams={setParams} />
+        <Tgas val={tgas} setter={setTgas} />
 
-        <Pressure params={params} setParams={setParams} />
+        <Pressure val={pressure} setter={setPressure} />
 
-        <PathLength params={params} setParams={setParams} />
+        <PathLength val={path_length} setter={setPath_length} />
 
-        <Molecule params={params} setParams={setParams} />
+        <Molecule val={species[0].molecule} setter={setSpecies.molecule} />
 
-        <MoleFraction params={params} setParams={setParams} />
+        <MoleFraction
+          val={species[0].mole_fraction}
+          setter={setSpecies.mole_fraction}
+        />
       </div>
-      <Fetch setError={setError} />
+      <Fetch
+        params={{
+          database,
+          max_wavenumber_range,
+          min_wavenumber_range,
+          mode,
+          path_length,
+          pressure,
+          simulate_slit,
+          species,
+          tgas,
+          trot,
+          tvib,
+        }}
+        setError={setError}
+      />
       {progress && <div id="spinner" />}
       {error && <Error />}
 

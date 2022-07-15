@@ -1,5 +1,6 @@
 import React from "react";
 import Plot from "react-plotly.js";
+import { useSelector } from "react-redux";
 
 function Plotly() {
   const data = useSelector((state) => state.data);

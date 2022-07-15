@@ -1,6 +1,6 @@
 import React from "react";
 
-function MinWave({ params, setParams }) {
+function MinWave({ val, setter }) {
   return (
     <div className="input">
       <label htmlFor="min-wave">
@@ -9,12 +9,10 @@ function MinWave({ params, setParams }) {
       <input
         id="min-wave"
         type="number"
-        defaultValue={params.min_wavenumber_range}
+        defaultValue={val}
         min={500}
         max={10000}
-        onChange={(e) =>
-          setParams({ ...params, min_wavenumber_range: e.target.value })
-        }
+        onChange={(e) => setter(e.target.value)}
       ></input>
     </div>
   );
