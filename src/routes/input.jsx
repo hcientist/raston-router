@@ -4,10 +4,8 @@ import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 import Fetch from "../components/Fetch";
-import Error from "../components/Error";
 import Plotly from "../components/Plotly";
 
-import "../App.css";
 import Database from "../components/inputs/Database";
 import Mode from "../components/inputs/Mode";
 import MaxWave from "../components/inputs/MaxWave";
@@ -18,11 +16,12 @@ import PathLength from "../components/inputs/PathLength";
 import Molecule from "../components/inputs/Molecule";
 import MoleFraction from "../components/inputs/MoleFraction";
 
-export default function Input() {
-  const [error, setError] = useState(false);
+import "../App.css";
 
-  const progress = useSelector((state) => state.isProgressing);
+export default function Input() {
   const storedParams = useSelector((state) => state.params);
+  const progress = useSelector((state) => state.isProgressing);
+  const error = useSelector((state) => state.isError);
 
   // values set by user
   const [database, setDatabase] = useState(storedParams.database);
@@ -74,6 +73,7 @@ export default function Input() {
           setter={setSpecies.mole_fraction}
         />
       </div>
+
       <Fetch
         params={{
           database,
@@ -88,10 +88,15 @@ export default function Input() {
           trot,
           tvib,
         }}
-        setError={setError}
       />
+
       {progress && <div id="spinner" />}
-      {error && <Error />}
+
+      {error && (
+        <div id="error">
+          <p style={{ fontSize: 30 }}>⚠ Error reaching out to Radis App ⚠</p>
+        </div>
+      )}
 
       {!progress && <Plotly />}
       <Outlet />

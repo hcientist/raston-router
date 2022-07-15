@@ -5,6 +5,9 @@ export const Action = Object.freeze({
 
   ShowProgress: "ShowProgress",
   HideProgress: "HideProgress",
+
+  ShowError: "ShowError",
+  HideError: "HideError",
 });
 
 // fetch parameters
@@ -24,4 +27,13 @@ export function showProgress(progress) {
 
 export function hideProgress(progress) {
   return { type: Action.HideProgress, payload: progress };
+}
+
+// error text
+export function showError(error) {
+  return { type: Action.ShowError, payload: error };
+}
+
+export function hideError(error) {
+  return { type: Action.HideError, payload: error };
 }

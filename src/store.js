@@ -21,37 +21,51 @@ const initialState = {
   data: null,
 
   isProgressing: false,
+
+  isError: false,
 };
 
 function reducer(state, action) {
   switch (action.type) {
-    // fetch parameters
+    // calc_spectrum parameters
     case Action.StoreParams:
       return {
         ...state,
         params: action.payload,
       };
 
-    // Show spinning progress wheel
-    case Action.ShowProgress:
-      return {
-        ...state,
-        isProgressing: true,
-      };
-    // Hide spinning progress wheel
-    case Action.HideProgress:
-      return {
-        ...state,
-        isProgressing: false,
-      };
-
-      
+    // graph data (Plotly)
     case Action.StoreData:
       return {
         ...state,
         data: action.payload,
       };
 
+    // show spinning progress wheel
+    case Action.ShowProgress:
+      return {
+        ...state,
+        isProgressing: true,
+      };
+    // hide spinning progress wheel
+    case Action.HideProgress:
+      return {
+        ...state,
+        isProgressing: false,
+      };
+
+    // show error text
+    case Action.ShowError:
+      return {
+        ...state,
+        isError: true,
+      };
+    // hide error text
+    case Action.HideError:
+      return {
+        ...state,
+        isError: false,
+      };
 
     default:
       return state;
