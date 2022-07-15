@@ -5,23 +5,33 @@ export const Action = Object.freeze({
 
   ShowProgress: "ShowProgress",
   HideProgress: "HideProgress",
+
+  ShowError: "ShowError",
+  HideError: "HideError",
 });
 
-// fetch parameters
+// -------------------- calc_spectrum parameters --------------------
 export function storeParams(params) {
   return { type: Action.StoreParams, payload: params };
 }
 
-// graph data
+// -------------------- graph data (Plotly) --------------------
 export function storeData(data) {
   return { type: Action.StoreData, payload: data };
 }
 
-// progress spinner
+// -------------------- progress spinner --------------------
 export function showProgress(progress) {
   return { type: Action.ShowProgress, payload: progress };
 }
-
 export function hideProgress(progress) {
   return { type: Action.HideProgress, payload: progress };
+}
+
+// -------------------- error text --------------------
+export function showError(error) {
+  return { type: Action.ShowError, payload: error };
+}
+export function hideError(error) {
+  return { type: Action.HideError, payload: error };
 }
