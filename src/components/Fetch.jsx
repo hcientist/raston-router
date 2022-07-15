@@ -1,16 +1,16 @@
 import React from "react";
 
 import { useDispatch } from "react-redux";
-import { storeParams, storeData } from "../actions";
+import { hideProgress, showProgress, storeParams } from "../actions";
 
-function Fetch({ params, setData, setLoading, setError }) {
+function Fetch({ params, setData, setError }) {
   const dispatch = useDispatch();
 
   async function fetchRadis() {
     dispatch(storeParams(params));
 
     setError(false);
-    setLoading(true);
+    dispatch(showProgress());
 
     let response;
     try {
@@ -39,10 +39,9 @@ function Fetch({ params, setData, setLoading, setError }) {
 
       if (response.ok) {
         setData(JSON.parse(await response.text()));
-        // dispatch(storeData(JSON.parse(await response.text())));
-        setLoading(false);
+        dispatch(hideProgress());
       } else {
-        setLoading(false);
+        dispatch(hideProgress());
         setError(true);
         setData(null);
       }

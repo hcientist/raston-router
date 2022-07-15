@@ -1,10 +1,10 @@
 import * as React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 import Fetch from "../components/Fetch";
 import Form from "../components/Form";
-import Spinner from "../components/Spinner";
 import Error from "../components/Error";
 import Plotly from "../components/Plotly";
 
@@ -12,8 +12,9 @@ import "../App.css";
 
 export default function Input() {
   const [data, setData] = useState("");
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const progress = useSelector((state) => state.isProgressing);
 
   // user parameters
   const [params, setParams] = useState({
@@ -35,16 +36,11 @@ export default function Input() {
       <h1>Input</h1>
 
       <Form params={params} setParams={setParams} />
-      <Fetch
-        params={params}
-        setData={setData}
-        setLoading={setLoading}
-        setError={setError}
-      />
-      {loading && <Spinner />}
+      <Fetch params={params} setData={setData} setError={setError} />
+      {progress && <div id="spinner" />}
       {error && <Error />}
 
-      {!loading && <Plotly data={data} params={params} />}
+      {!progress && <Plotly data={data} params={params} />}
       <Outlet />
     </div>
   );
