@@ -1,7 +1,14 @@
 export const Action = Object.freeze({
-  StoreInput: "StoreInput",
+  StoreParams: "StoreParams",
+  StoreData: "StoreData",
 });
 
-export function storeInput(params) {
-  return { type: Action.StoreInput, payload: params };
+// fetch parameters
+export function storeParams(params) {
+  return { type: Action.StoreParams, payload: params };
+}
+
+// graph data
+export function storeData(data) {
+  return { type: Action.StoreData, payload: data };
 }

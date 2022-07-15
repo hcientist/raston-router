@@ -1,13 +1,13 @@
 import React from "react";
 
 import { useDispatch } from "react-redux";
-import { storeInput } from "../actions";
+import { storeParams, storeData } from "../actions";
 
 function Fetch({ params, setData, setLoading, setError }) {
   const dispatch = useDispatch();
 
   async function fetchRadis() {
-    dispatch(storeInput(params));
+    dispatch(storeParams(params));
 
     setError(false);
     setLoading(true);
@@ -39,6 +39,7 @@ function Fetch({ params, setData, setLoading, setError }) {
 
       if (response.ok) {
         setData(JSON.parse(await response.text()));
+        // dispatch(storeData(JSON.parse(await response.text())));
         setLoading(false);
       } else {
         setLoading(false);

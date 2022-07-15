@@ -2,15 +2,20 @@ import { createStore } from "redux";
 import { Action } from "./actions";
 
 const initialState = {
-  storeInput: null,
+  params: null,
+  data: null,
 };
 
 function reducer(state, action) {
   switch (action.type) {
-    case Action.StoreInput:
+    case Action.StoreParams:
       return {
         ...state,
-        storeInput: action.payload,
+        storeParams: action.payload,
+      };
+    case Action.StoreData:
+      return {
+        storeData: action.payload,
       };
     default:
       return state;
