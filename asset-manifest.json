@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/raston-router/static/css/main.b61b9a91.css",
-    "main.js": "/raston-router/static/js/main.1825418c.js",
+    "main.js": "/raston-router/static/js/main.be4300ed.js",
     "index.html": "/raston-router/index.html",
     "main.b61b9a91.css.map": "/raston-router/static/css/main.b61b9a91.css.map",
-    "main.1825418c.js.map": "/raston-router/static/js/main.1825418c.js.map"
+    "main.be4300ed.js.map": "/raston-router/static/js/main.be4300ed.js.map"
   },
   "entrypoints": [
     "static/css/main.b61b9a91.css",
-    "static/js/main.1825418c.js"
+    "static/js/main.be4300ed.js"
   ]
 }
