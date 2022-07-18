@@ -9,6 +9,7 @@ import Input from "./routes/input";
 
 import "./index.css";
 import store from "./store";
+import NotFound from "./components/NotFound";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,8 +21,10 @@ root.render(
             <Route path="output" element={<Output />} />
             <Route path="input" element={<Input />} />
             <Route path="input" element={<Input />} />
-            <Route element={<NotFound />} />
+            {/* do you want it to have the <App /> component rendered too? use the one just below instead of the one currently enabled */}
+            <Route path="*" element={<NotFound />} />
           </Route>
+          {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </BrowserRouter>
     </Provider>
