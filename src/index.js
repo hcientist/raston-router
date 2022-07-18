@@ -19,6 +19,8 @@ root.render(
           <Route path="/" element={<App />}>
             <Route path="output" element={<Output />} />
             <Route path="input" element={<Input />} />
+            <Route path="input" element={<Input />} />
+            <Route element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
