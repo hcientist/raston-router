@@ -2,7 +2,7 @@
   "name": "raston-router",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vanfossen.github.io/raston-router/",
+  "homepage": "https://hcientist.github.io/raston-router/",
   "dependencies": {
     "eslint-config-react-app": "^7.0.1",
     "react": "^18.2.0",
